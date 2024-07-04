@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <form action="" id="bookForm">
+            <div class="formId">
+               <label for="title">title</label><br>
+               <input type="text" id="title">
+            </div>
+            
+            <div class="formId">
+               <label for="author">author</label><br>
+               <input type="text" id="author">
+            </div>
+            
+            <div class="formId">
+               <label for="year">year</label><br>
+               <input type="text" id="year">
+            </div><br>
+
+            <input type="button" id="btn" value="Add Your Data">           
+        </form>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Year</th>
+            </tr>
+        </table>
+        <table id="bookList">
+
+        </table>      
+    </div>
+   
+    <script>
+        const title = document.getElementById('title');
+        const author = document.getElementById('author');
+        const year = document.getElementById('year');
+        const btn = document.getElementById('btn');
+        const bookList = document.getElementById('bookList');
+
+
+        btn.addEventListener('click',function(e){
+            e.preventDefault();
+            if(title.value == '' && author.value == '' && year.value == ''){
+                alert('Please! Provide Some Data');
+            }
+            else{
+                const newRow = document.createElement('tr');
+
+                //create title
+                const newTitle = document.createElement('td');
+                newTitle.innerHTML = title.value;
+                newRow.appendChild(newTitle);
+
+                //create author
+                const newAuthor = document.createElement('td');
+                newAuthor.innerHTML = author.value;
+                newRow.appendChild(newAuthor);
+
+
+
+                //create year
+                const newYear = document.createElement('td');
+                newYear.innerHTML = year.value;
+                newRow.appendChild(newYear);
+
+                bookList.appendChild(newRow);
+
+            }
+        })
+    </script>
+</body>
+</html>
